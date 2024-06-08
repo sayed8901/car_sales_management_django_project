@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+<!-- crispy forms -->
+{% load crispy_forms_tags %}
+
+<!-- block content -->
+{% block content %}
+
+<form class="w-50 mx-auto" method="post">
+  <h1 class="my-3">Add a car brand</h1>
+
+  {% csrf_token %}
+
+  <!-- form -->
+  {{form | crispy}}
+
+  <button class="btn btn-warning mb-5 mt-3">Add</button>
+</form>
+
+<!-- end of block -->
+{% endblock %}

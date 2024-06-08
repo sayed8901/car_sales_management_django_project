@@ -2,6 +2,10 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
+# necessary importing for media files
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='homepage'),
@@ -9,3 +13,9 @@ urlpatterns = [
     path('car/', include('car.urls')),
     path('brand/', include('brand.urls')),
 ]
+
+# adding media url to urlpatterns
+urlpatterns += static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT
+)
