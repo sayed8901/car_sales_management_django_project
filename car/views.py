@@ -37,3 +37,11 @@ class AddCarView(CreateView):
     template_name = 'add_car.html'
     success_url = reverse_lazy('homepage')
 
+
+
+
+# detailsView class
+class DetailCarView(DetailView):
+    model = models.Car
+    pk_url_kwarg = 'id'
+    template_name = 'car_details.html'

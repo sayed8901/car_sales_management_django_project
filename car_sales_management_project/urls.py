@@ -9,13 +9,13 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='homepage'),
+
+    path('brand/<slug:brand_slug>/', views.home, name='brand_wise_car'),
+
     path('user/', include('user.urls')),
     path('car/', include('car.urls')),
     path('brand/', include('brand.urls')),
 ]
 
 # adding media url to urlpatterns
-urlpatterns += static(
-    settings.MEDIA_URL,
-    document_root=settings.MEDIA_ROOT
-)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

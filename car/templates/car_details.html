@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+<!-- crispy forms -->
+{% load crispy_forms_tags %}
+
+<!-- block content -->
+{% block content %}
+
+<div class="row d-flex justify-content-between align-items-center">
+  <!-- media image -->
+  <div class="col-sm-12 col-lg-6">
+    <img
+      src="{{post.image.url}}"
+      class="card-img-top rounded-3 w-100 pe-lg-5 my-5"
+      alt="..."
+    />
+  </div>
+
+  <div class="col-sm-12 col-lg-6 my-3">
+    <div class="card mx-2">
+      <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.content}}</p>
+
+        <!-- accessing author name via post relationship -->
+        <p>Author: {{post.author.first_name}} {{post.author.last_name}}</p>
+
+        <div>
+          Categories: {% for cat in post.category.all %}
+          <button class="btn btn-sm btn-primary m-2" disabled>
+            {{cat.name}}
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- comments part -->
+<!-- showing comments -->
+<div class="card w-75 mx-auto my-2 p-5">
+  <h5 class="text-center">Total comments: {{comments | length}}</h5>
+  <div class="card-body row">
+    {% for comment in comments %}
+    <div class="border border-1 border-info m-2">
+      <p><b>{{comment.name}}</b>, comments on: {{comment.created_on}}</p>
+      <p>Comment: <b>{{comment.body}}</b></p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- comments form -->
+<div class="card w-50 mx-auto mb-5">
+  <form class="card-body" method="post">
+    <h1>Add comment</h1>
+
+    {% csrf_token %}
+
+    <!-- form -->
+    {{ comment_form | crispy}}
+
+    <button class="btn btn-warning">Post</button>
+  </form>
+</div>
+
+<!-- end of block -->
+{% endblock %}

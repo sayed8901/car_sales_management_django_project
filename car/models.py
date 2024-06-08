@@ -6,10 +6,9 @@ class Car(models.Model):
     car_name = models.CharField(max_length=100)
     description = models.TextField()
 
-    # image field to save image in the car app's media folder
-    image = models.ImageField(upload_to='car/media/uploads/', blank=True, null=True)
-
-    # image = models.ImageField(upload_to='car/media/uploads/', blank=True, null=True)
+    # image field to save image in the car app's media folder    
+    # image = models.ImageField(upload_to='uploads/', blank = True, null = True)
+    image = models.ImageField(upload_to='car/media/uploads/', blank = True, null = True)
 
     quantity = models.IntegerField()
     price = models.IntegerField()

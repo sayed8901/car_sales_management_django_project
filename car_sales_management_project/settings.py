@@ -136,6 +136,9 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 
 
+# (optional) to serve media files for overall project
+# MEDIA_ROOT = BASE_DIR / 'media'
+
 
 
 # Default primary key field type

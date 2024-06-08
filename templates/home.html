@@ -20,6 +20,51 @@
 </div>
 
 <!-- category & car listing part -->
+<h5 class="text-center">All Categories:</h5>
+{% for single_brand in brand %}
+<a href="{% url 'brand_wise_car' single_brand.slug %}">{{single_brand.name}}</a>
+{% endfor %}
+
+<div>
+  <!-- counting contents -->
+  <h3 class="text-center">{{data | length}} results found</h3>
+
+  <!-- post contents -->
+  <div class="row d-flex flex-warp">
+    <!-- looping -->
+    {% for car in data %}
+
+    <div class="col-sm-12 col-md-6 col-lg-4 my-3">
+      <div class="card mx-2">
+        <div class="card-body">
+          <!-- media image -->
+          <img
+            src="{{car.image.url}}"
+            class="card-img-top rounded-3 py-3 px-1"
+            alt="..."
+          />
+
+          <h5 class="card-title">
+            <a
+              href="{% url 'detail_car_info' car.id %}"
+              class="text-decoration-none"
+              >{{car.car_name}}</a
+            >
+          </h5>
+          <p class="card-text">{{car.description | truncatewords:10}}</p>
+          <div class="d-flex justify-content-between">
+            <h4 class="card-title">Price: {{car.price}}</h4>
+          <h4 class="card-title">Quantity: {{car.quantity}}</h4>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
 
 <!-- end of block -->
 {% endblock %}
