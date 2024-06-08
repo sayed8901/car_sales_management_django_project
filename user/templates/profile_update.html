@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+<!-- crispy forms -->
+{% load crispy_forms_tags %}
+
+<!-- block content -->
+{% block content %}
+
+<form class="w-50 mx-auto" method="post">
+  <h1>Update your profile</h1>
+
+  <div class="text-center my-5">
+    <a class="btn btn-warning" href="{% url 'pass_change' %}"
+      >Change your password</a
+    >
+  </div>
+
+  {% csrf_token %}
+
+  <!-- form -->
+  {{form | crispy}}
+
+  <button class="btn btn-warning mb-5">Update Data</button>
+</form>
+
+<!-- end of block -->
+{% endblock %}

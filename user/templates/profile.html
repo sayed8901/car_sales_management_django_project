@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+<!-- crispy forms -->
+{% load crispy_forms_tags %}
+
+<!-- block content -->
+{% block content %}
+
+<h1 class="text-center">Welcome {{user}} to your profile page</h1>
+
+<div class="text-center my-4">
+  <a class="btn btn-primary" href="{% url 'edit_profile' %}"
+    >Edit Your Profile</a
+  >
+</div>
+
+<!-- Car listing part -->
+
+<!-- end of block -->
+{% endblock %}
