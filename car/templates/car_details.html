@@ -10,7 +10,7 @@
   <!-- media image -->
   <div class="col-sm-12 col-lg-6">
     <img
-      src="{{post.image.url}}"
+      src="{{car.image.url}}"
       class="card-img-top rounded-3 w-100 pe-lg-5 my-5"
       alt="..."
     />
@@ -19,18 +19,13 @@
   <div class="col-sm-12 col-lg-6 my-3">
     <div class="card mx-2">
       <div class="card-body">
-        <h5 class="card-title">{{post.title}}</h5>
-        <p class="card-text">{{post.content}}</p>
+        <h3 class="card-title mb-2">{{car.car_name}}</h3>
+        <h4 class="card-title mb-4">Brand: {{car.brand_name}}</h4>
+        <p class="card-text">{{car.description}}</p>
 
-        <!-- accessing author name via post relationship -->
-        <p>Author: {{post.author.first_name}} {{post.author.last_name}}</p>
-
-        <div>
-          Categories: {% for cat in post.category.all %}
-          <button class="btn btn-sm btn-primary m-2" disabled>
-            {{cat.name}}
-          </button>
-          {% endfor %}
+        <div class="d-flex justify-content-between">
+          <h4 class="card-title">Price: {{car.price}}</h4>
+          <h4 class="card-title">Quantity: {{car.quantity}}</h4>
         </div>
       </div>
     </div>

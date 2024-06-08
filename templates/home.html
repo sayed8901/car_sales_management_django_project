@@ -21,9 +21,15 @@
 
 <!-- category & car listing part -->
 <h5 class="text-center">All Categories:</h5>
-{% for single_brand in brand %}
-<a href="{% url 'brand_wise_car' single_brand.slug %}">{{single_brand.name}}</a>
-{% endfor %}
+<div class="d-flex justify-content-evenly my-5">
+  {% for single_brand in brand %}
+  <a
+    class="text-decoration-none btn btn-outline-primary"
+    href="{% url 'brand_wise_car' single_brand.slug %}"
+    >{{single_brand.name}}</a
+  >
+  {% endfor %}
+</div>
 
 <div>
   <!-- counting contents -->
@@ -54,10 +60,8 @@
           <p class="card-text">{{car.description | truncatewords:10}}</p>
           <div class="d-flex justify-content-between">
             <h4 class="card-title">Price: {{car.price}}</h4>
-          <h4 class="card-title">Quantity: {{car.quantity}}</h4>
+            <h4 class="card-title">Quantity: {{car.quantity}}</h4>
           </div>
-
-
         </div>
       </div>
     </div>
