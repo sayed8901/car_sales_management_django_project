@@ -6,7 +6,7 @@ class CarForm(forms.ModelForm):
     class Meta:
         model = Car
         # fields = '__all__'
-        exclude = ['customer',]
+        exclude = ['customers',]
 
 
 class CommentForm(forms.ModelForm):

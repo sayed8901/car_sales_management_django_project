@@ -1,5 +1,6 @@
 from django.db import models
 from brand.models import Brand
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -17,8 +18,8 @@ class Car(models.Model):
     # One to many relationship with brand
     brand_name = models.ForeignKey(Brand, on_delete=models.CASCADE)
 
-    # Customer name will be inserted while a car is being bought
-    customer = models.CharField(max_length=50, blank=True, null=True)
+    # Customers name will be inserted while a car is being bought
+    customers = models.ManyToManyField(User, blank=True)
 
 
     def __str__(self):

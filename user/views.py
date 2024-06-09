@@ -68,7 +68,7 @@ class UserLogoutView(LogoutView):
 
 @login_required         # login required decorator
 def profile(request):
-    data = Car.objects.filter(customer = request.user)
+    data = Car.objects.filter(customers = request.user)
 
     return render(request, 'profile.html', {'data': data})
 

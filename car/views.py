@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from . import models
 from . import forms
 
+from django.contrib import messages
+
 # necessary importing for class view implementation
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
@@ -59,16 +61,25 @@ class DetailCarView(DetailView):
 
 def car_buy(request, id, username):
     target_car = models.Car.objects.get(pk=id)
+    customer_list = target_car.customers.all()
 
-    if target_car.quantity > 0:
-        target_car.quantity -= 1
-        target_car.customer = username
+    if username in customer_list:
+        messages.success(request, 'Already you have bought the car')
+        print(username)
+    
+    else:
+        if target_car.quantity > 0:
+            target_car.quantity -= 1
+            target_car.customers = username
 
-        # Save the changes to the database
-        target_car.save()
+            # Save the changes to the database
+            target_car.save()
+            messages.success(request, 'Car Buying Successful')
 
-        print(target_car.car_name)
+            print(target_car.car_name)
+    
+        else:
+            messages.warning(request, 'Car Buying Process Failed!')
 
     return render(request, 'profile.html')
-
 
