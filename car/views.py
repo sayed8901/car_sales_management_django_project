@@ -59,9 +59,16 @@ class DetailCarView(DetailView):
 
 def car_buy(request, id, username):
     target_car = models.Car.objects.get(pk=id)
-    target_car.quantity -= 1
-    target_car.customer = username
 
-    print(target_car.car_name)
+    if target_car.quantity > 0:
+        target_car.quantity -= 1
+        target_car.customer = username
+
+        # Save the changes to the database
+        target_car.save()
+
+        print(target_car.car_name)
 
     return render(request, 'profile.html')
+
+
