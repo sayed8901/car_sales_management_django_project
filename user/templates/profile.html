@@ -15,9 +15,10 @@
 </div>
 
 <!-- Car listing part -->
-{% for car in data %}
-<p>{{car.car_name}}</p>
-<p>{{car.quantity}}</p>
+{% for order in data %}
+<p>{{order.car.car_name}}</p>
+<p>{{order.user}}</p>
+<p>{{order.created_on}}</p>
 {% endfor %}
 
 <!-- end of block -->

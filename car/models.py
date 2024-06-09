@@ -18,9 +18,6 @@ class Car(models.Model):
     # One to many relationship with brand
     brand_name = models.ForeignKey(Brand, on_delete=models.CASCADE)
 
-    # Customers name will be inserted while a car is being bought
-    customers = models.ManyToManyField(User, blank=True)
-
 
     def __str__(self):
         return f'{self.car_name}'

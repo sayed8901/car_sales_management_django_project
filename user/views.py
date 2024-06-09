@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from . import forms
 from car.models import Car
+from order.models import Order
+
 from django.contrib import messages
 
 # necessary importing for class view implementation
@@ -68,9 +70,9 @@ class UserLogoutView(LogoutView):
 
 @login_required         # login required decorator
 def profile(request):
-    data = Car.objects.filter(customers = request.user)
+    order = Order.objects.filter(user=request.user)
 
-    return render(request, 'profile.html', {'data': data})
+    return render(request, 'profile.html', {'data': order})
 
 
 

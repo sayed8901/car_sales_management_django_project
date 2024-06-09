@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'car',
     'brand',
     'user',
+    'order',
     "crispy_forms",
     "crispy_bootstrap5",
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from . import models
 from . import forms
+from order.models import Order
 
 from django.contrib import messages
 
@@ -59,27 +60,22 @@ class DetailCarView(DetailView):
 
 
 
-def car_buy(request, id, username):
+def car_buy(request, id):
     target_car = models.Car.objects.get(pk=id)
-    customer_list = target_car.customers.all()
-
-    if username in customer_list:
-        messages.success(request, 'Already you have bought the car')
-        print(username)
     
-    else:
-        if target_car.quantity > 0:
-            target_car.quantity -= 1
-            target_car.customers = username
+    if target_car.quantity > 0:
+        target_car.quantity -= 1
+        target_car.save()
 
-            # Save the changes to the database
-            target_car.save()
-            messages.success(request, 'Car Buying Successful')
+        # creating a new car order
+        order = Order.objects.create(
+            user = request.user,
+            car = target_car
+        )
+        order.save()
+        print(order)
 
-            print(target_car.car_name)
-    
-        else:
-            messages.warning(request, 'Car Buying Process Failed!')
+        messages.success(request, 'Car buying successful.')
 
     return render(request, 'profile.html')
 

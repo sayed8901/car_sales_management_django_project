@@ -33,7 +33,7 @@
         <div class="text-center">
           {% if user.is_authenticated and car.quantity > 0 %}
           <a
-            href="{% url 'car_buy' car.id user.username %}"
+            href="{% url 'car_buy' car.id %}"
             class="btn btn-primary"
             >Buy Now</a
           >

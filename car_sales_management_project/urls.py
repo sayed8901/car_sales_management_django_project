@@ -15,6 +15,7 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('car/', include('car.urls')),
     path('brand/', include('brand.urls')),
+    path('order/', include('order.urls')),
 ]
 
 # adding media url to urlpatterns
