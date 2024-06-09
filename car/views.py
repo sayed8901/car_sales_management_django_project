@@ -77,5 +77,5 @@ def car_buy(request, id):
 
         messages.success(request, 'Car buying successful.')
 
-    return render(request, 'profile.html')
+    return redirect('profile')
 

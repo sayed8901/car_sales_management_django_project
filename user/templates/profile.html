@@ -15,11 +15,38 @@
 </div>
 
 <!-- Car listing part -->
-{% for order in data %}
-<p>{{order.car.car_name}}</p>
-<p>{{order.user}}</p>
-<p>{{order.created_on}}</p>
-{% endfor %}
+<div>
+  <!-- counting contents -->
+  <h3 class="text-center">{{data | length}} Cars Found</h3>
 
-<!-- end of block -->
-{% endblock %}
+  <!-- car order contents -->
+  <div class="row d-flex flex-warp">
+    <!-- looping -->
+    {% for order in data %}
+
+    <div class="col-sm-12 col-md-6 col-lg-4 my-3">
+      <div class="card mx-2">
+        <div class="card-body">
+          <!-- media image -->
+          <img
+            src="{{order.car.image.url}}"
+            class="card-img-top rounded-3 py-3 px-1"
+            alt="..."
+          />
+
+          <h5 class="card-title">{{order.car.car_name}}</h5>
+          <p class="card-text">{{car.description}}</p>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title">Price: {{order.car.price}}</h5>
+            <h5 class="card-title">Quantity: {{order.car.quantity}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+
+  <!-- end of block -->
+  {% endblock %}
+</div>

@@ -27,7 +27,7 @@ def register(request):
             register_form.save()
             messages.success(request, 'Account created successfully')
 
-            return redirect('register')
+            return redirect('login')
     
     else:
         register_form = forms.RegistrationForm()
