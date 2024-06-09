@@ -1,6 +1,7 @@
 from django.db import models
 from brand.models import Brand
 
+
 # Create your models here.
 class Car(models.Model):
     car_name = models.CharField(max_length=100)
@@ -15,6 +16,9 @@ class Car(models.Model):
 
     # One to many relationship with brand
     brand_name = models.ForeignKey(Brand, on_delete=models.CASCADE)
+
+    # Customer name will be inserted while a car is being bought
+    customer = models.CharField(max_length=50, blank=True, null=True)
 
 
     def __str__(self):

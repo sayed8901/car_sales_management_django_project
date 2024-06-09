@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from . import forms
+from car.models import Car
 from django.contrib import messages
 
 # necessary importing for class view implementation
@@ -67,7 +68,9 @@ class UserLogoutView(LogoutView):
 
 @login_required         # login required decorator
 def profile(request):
-    return render(request, 'profile.html')
+    data = Car.objects.filter(customer = request.user)
+
+    return render(request, 'profile.html', {'data': data})
 
 
 
@@ -109,6 +112,5 @@ def password_change(request):
         form = PasswordChangeForm(user = request.user)
 
     return render(request, 'password_change.html', {'form': form})
-
 
 

@@ -13,23 +13,6 @@ from django.utils.decorators import method_decorator
 
 
 # Create your views here.
-@login_required
-def add_car(request):
-    if request.method == 'POST':
-        form = forms.CarForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            print(form.cleaned_data)
-            return redirect('homepage')
-    else:
-        form = forms.CarForm()
-
-    return render(request, 'add_car.html', {'form': form})
-
-
-
-
 @method_decorator(login_required, name='dispatch')
 class AddCarView(CreateView):
     model = models.Car
@@ -72,3 +55,13 @@ class DetailCarView(DetailView):
         return context
 
 
+
+
+def car_buy(request, id, username):
+    target_car = models.Car.objects.get(pk=id)
+    target_car.quantity -= 1
+    target_car.customer = username
+
+    print(target_car.car_name)
+
+    return render(request, 'profile.html')

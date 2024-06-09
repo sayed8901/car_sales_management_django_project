@@ -15,6 +15,10 @@
 </div>
 
 <!-- Car listing part -->
+{% for car in data %}
+<p>{{car.car_name}}</p>
+<p>{{car.quantity}}</p>
+{% endfor %}
 
 <!-- end of block -->
 {% endblock %}
