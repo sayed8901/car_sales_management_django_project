@@ -46,9 +46,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'add_car' %}">Add Car</a>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'add_brand' %}">Add Car Brand</a>
-            </li> -->
+            </li>
             {% endif %}
           </ul>
           <div class="d-flex">
@@ -61,6 +61,7 @@
                   >Profile</a
                 >
               </li>
+
               <li class="nav-item">
                 <a
                   class="nav-link btn btn-warning text-dark"
@@ -68,19 +69,28 @@
                   >log out</a
                 >
               </li>
+              <!-- <li class="nav-item">
+                <form action="{% url 'logout' %}" method="POST">
+                  {% csrf_token %}
+                  <button class="nav-link btn btn-warning text-dark">
+                    Log Out
+                  </button>
+                </form>
+              </li> -->
+
               {% else %}
-              <li class="nav-item">
-                <a
-                  class="nav-link btn btn-warning text-dark"
-                  href="{% url 'register' %}"
-                  >Signup</a
-                >
-              </li>
               <li class="nav-item">
                 <a
                   class="nav-link btn btn-info text-dark"
                   href="{% url 'login' %}"
                   >login</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link btn btn-warning text-dark"
+                  href="{% url 'register' %}"
+                  >Signup</a
                 >
               </li>
               {% endif %}

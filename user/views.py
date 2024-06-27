@@ -8,6 +8,7 @@ from django.contrib import messages
 # necessary importing for class view implementation
 from django.contrib.auth.views import LoginView, LogoutView,PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import login, logout
 
 # importing reverse_lazy to redirect
 from django.urls import reverse_lazy
@@ -64,6 +65,8 @@ class UserLoginView(LoginView):
 # logout using class based view
 class UserLogoutView(LogoutView):
     def get_success_url(self) -> str:
+        logout(self.request)
+        
         return reverse_lazy('login')
 
 
