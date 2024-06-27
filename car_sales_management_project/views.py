@@ -12,4 +12,3 @@ def home(request, brand_slug = None):
         car_data = Car.objects.filter(brand_name = target_brand)
 
     return render(request, 'home.html', {'data' : car_data, 'brand' : brands})
-

@@ -7,8 +7,7 @@ from django.contrib import messages
 
 # necessary importing for class view implementation
 from django.contrib.auth.views import LoginView, LogoutView,PasswordChangeForm
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, update_session_auth_hash
 
 # importing reverse_lazy to redirect
 from django.urls import reverse_lazy
